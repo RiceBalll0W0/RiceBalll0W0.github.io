@@ -10,7 +10,8 @@ function findZero(state)
     }
 }
 
-export function actions(state) {
+export function actions(state)
+{
     const [i, j] = findZero(state)
     if(i === 0 && j === 0)
         return [up, left]
@@ -32,7 +33,7 @@ export function actions(state) {
         return [up, down, left, right]
 }
 
-function successor(state, action)
+export function successor(state, action)
 {
     const newS =[state[0].slice(), state[1].slice(), state[2].slice()]
     const [i, j] = findZero(state)
@@ -73,4 +74,27 @@ export function move(state, i, j)
         return successor(state, down)
     else
         return state
+}
+
+
+export function goalTest(state)
+{
+    const goalState = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 0]]
+    return is_equal(goalState, state)
+}
+
+function is_equal(s1, s2)
+{
+    for(let i = 0; i < 3; i++)
+    {
+        for(let j = 0; j < 3; j++)
+        {
+            if(s1[i][j] !== s2[i][j])
+                return false
+        }
+    }
+    return true
 }

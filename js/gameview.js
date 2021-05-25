@@ -1,4 +1,4 @@
-const canvas = document.querySelector('#canvas')
+export const canvas = document.querySelector('#canvas')
 const ctx = canvas.getContext('2d')
 const d = 3
 const tileWidth = canvas.width / d
@@ -33,13 +33,16 @@ class Tile {
 }
 
 export class GameView {
-    constructor(state){
+     constructor(state)
+    {
         ctx.clearRect(0, 0, canvas.width, canvas.height)
         this.board = [new Array(d), new Array(d), new Array(d)]
-        for(let i = 0; i < d; i++) {
-            for (let j = 0; j < d; j++) {
+        for(let i = 0; i < d; i++)
+        {
+            for(let j = 0; j < d; j++)
+            {
                 this.board[i][j] = new Tile(i, j, state[i][j])
-                this.board[i][j].draw();
+                this.board[i][j].draw()
             }
         }
     }
